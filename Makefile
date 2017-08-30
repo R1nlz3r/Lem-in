@@ -6,7 +6,7 @@
 #    By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/08/12 19:59:07 by mapandel          #+#    #+#              #
-#    Updated: 2017/08/23 23:50:14 by mapandel         ###   ########.fr        #
+#    Updated: 2017/08/31 00:24:05 by mapandel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,11 @@ CFLAGS = 	-Wall -Wextra -Werror -Weverything
 
 SRC =		sources/lem-in.c \
 			sources/touch_t_lem_in.c \
+			sources/touch_t_lem_in_2.c \
+			sources/touch_t_lem_in_3.c \
 			sources/lem-in_parsing.c \
 			sources/lem-in_checker.c \
+			sources/lem-in_pathfinder.c \
 			sources/lem-in_display.c \
 
 OBJ =		$(SRC:.c=.o)
