@@ -6,7 +6,7 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/14 22:50:03 by mapandel          #+#    #+#             */
-/*   Updated: 2017/08/23 13:27:32 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/08/26 22:36:56 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,12 @@ static void		lem_in_parsing_rooms(t_lem_in *li)
 			li->anthill[li->nb_rooms]->name = ft_strdup(split[0]);
 			li->anthill[li->nb_rooms]->x_coor = ft_atoi(split[1]);
 			li->anthill[li->nb_rooms]->y_coor = ft_atoi(split[2]);
-			if (li->start_boo == 1 && (li->start_boo = 2))
-				li->anthill[li->nb_rooms]->start = 1;
-			else if (li->end_boo == 1 && (li->end_boo = 2))
-				li->anthill[li->nb_rooms]->end = 1;
+			if (li->start_boo == 1 && (li->start_boo = 2)
+				&& (li->anthill[li->nb_rooms]->start = 1))
+				li->start_pos = li->nb_rooms;
+			else if (li->end_boo == 1 && (li->end_boo = 2)
+				&& (li->anthill[li->nb_rooms]->end = 1))
+				li->end_pos = li->nb_rooms;
 			++li->nb_rooms;
 		}
 	}
@@ -91,13 +93,14 @@ void			lem_in_parsing(t_lem_in *li)
 	while ((li->p_nb_ant || li->p_rooms || li->p_pipes)
 		&& get_next_line(0, &li->line) > 0)
 	{
-		if (li->line[0] == '#' && li->start_boo != 1 && li->end_boo != 1)
+		if (li->line[0] == '#')
 		{
 			if (ft_strcmp(li->line, "##start") && !li->start_boo)
 				li->start_boo = 1;
 			else if (ft_strcmp(li->line, "##end") && !li->end_boo)
 				li->end_boo = 1;
-			else
+			else if (!ft_strcmp(li->line, "##start")
+				|| !ft_strcmp(li->line, "##end"))
 				break ;
 		}
 		else if (li->p_nb_ant)
@@ -112,7 +115,8 @@ void			lem_in_parsing(t_lem_in *li)
 			lem_in_parsing_pipes(li);
 		else
 			break ;
-		ft_putendl(li->line);
+		if (li->p_nb_ant || li->p_rooms || li->p_pipes)
+			ft_putendl(li->line);
 		ft_strdel(&li->line);
 	}
 	ft_strdel(&li->line);
