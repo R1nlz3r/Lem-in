@@ -6,7 +6,7 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/16 13:49:35 by mapandel          #+#    #+#             */
-/*   Updated: 2017/08/22 20:50:50 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/08/26 23:52:49 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,22 +82,34 @@ void			del_t_lem_in(t_lem_in *li)
 	while (li->nb_rooms-- > 0)
 		del_t_lem_in_room(li->anthill[li->nb_rooms]);
 	ft_memdel((void**)&li->anthill);
+	while (li->nb_paths-- > 0)
+		del_t_lem_in_path(li->paths[li->nb_paths]);
+	ft_memdel((void**)&li->paths);
+	ft_memdel((void**)&li->paths_start);
+	ft_tabdel(&li->used_rooms);
 	ft_memdel((void**)&li);
 }
 
 t_lem_in		*init_t_lem_in(t_lem_in *li)
 {
-	if (!(li = ft_memalloc(sizeof(t_lem_in))))
-		exit (-1);
-	if (!(li->anthill = ft_memalloc(sizeof(t_lem_in_room*))))
+	if (!(li = ft_memalloc(sizeof(t_lem_in)))
+		|| !(li->anthill = ft_memalloc(sizeof(t_lem_in_room*)))
+		|| !(li->paths = ft_memalloc(sizeof(t_lem_in_path*)))
+		|| !(li->paths_start = ft_memalloc(sizeof(t_lem_in_path*)))
+		|| !(li->used_rooms = ft_tabnew(0)))
 		exit (-1);
 	li->line = NULL;
 	li->start_boo = 0;
 	li->end_boo = 0;
 	li->nb_ant = 0;
 	li->nb_rooms = 0;
+	li->nb_paths = 0;
 	li->p_nb_ant = 1;
 	li->p_rooms = 0;
 	li->p_pipes = 0;
+	li->start_pos = 0;
+	li->end_pos = 0;
+	li->travel_dir = 0;
+	li->cur_path = 0;
 	return (li);
 }
