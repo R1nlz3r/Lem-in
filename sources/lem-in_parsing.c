@@ -6,7 +6,7 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/14 22:50:03 by mapandel          #+#    #+#             */
-/*   Updated: 2017/08/26 22:36:56 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/08/31 09:07:23 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,12 +95,11 @@ void			lem_in_parsing(t_lem_in *li)
 	{
 		if (li->line[0] == '#')
 		{
-			if (ft_strcmp(li->line, "##start") && !li->start_boo)
+			if (ft_strinc(li->line, "##start") && ft_strlen(li->line) == 7 && !li->start_boo)
 				li->start_boo = 1;
-			else if (ft_strcmp(li->line, "##end") && !li->end_boo)
+			else if (ft_strinc(li->line, "##end") && ft_strlen(li->line) == 5 && !li->end_boo)
 				li->end_boo = 1;
-			else if (!ft_strcmp(li->line, "##start")
-				|| !ft_strcmp(li->line, "##end"))
+			else if (li->line[1] == '#')
 				break ;
 		}
 		else if (li->p_nb_ant)
