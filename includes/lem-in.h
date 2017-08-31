@@ -6,7 +6,7 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/12 17:20:29 by mapandel          #+#    #+#             */
-/*   Updated: 2017/08/28 19:09:48 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/08/31 07:55:44 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,12 @@ void						lem_in_parsing(t_lem_in *li);
 int							lem_in_checker_doubles(t_lem_in *li, char *name,
 	int x, int y);
 int							lem_in_is_banned(t_lem_in *li, t_lem_in_room *room);
-void						lem_in_search_paths(t_lem_in *li);
+void						lem_in_prepare_search_paths(t_lem_in *li);
+void						lem_in_search_paths(t_lem_in *li)
+	__attribute__ ((noreturn));
 void						lem_in_display_error(t_lem_in *li)
 	__attribute__ ((noreturn));
 void						lem_in_display_path(t_lem_in_path *li_p);
+void						lem_in_display_banned_room(t_lem_in *li);
 
 #endif
