@@ -6,7 +6,7 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/15 11:43:54 by mapandel          #+#    #+#             */
-/*   Updated: 2017/08/31 07:57:56 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/09/04 07:26:27 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,14 @@ void		lem_in_display_banned_room(t_lem_in *li)
 	ft_putendl("");
 }
 
-void		lem_in_display_path(t_lem_in_path *li_p)
+void		lem_in_display_path(t_lem_in *li, t_lem_in_path *li_p)
 {
 	t_lem_in_path	*tmp;
 
 	tmp = lem_in_path_start(li_p);
 	while (tmp)
 	{
-		ft_putnbr(tmp->room);
+		ft_putstr(li->anthill[tmp->room]->name);
 		tmp = tmp->next;
 		if (tmp)
 			ft_putchar('-');
