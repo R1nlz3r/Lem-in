@@ -6,7 +6,7 @@
 #    By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/08/12 19:59:07 by mapandel          #+#    #+#              #
-#    Updated: 2017/08/31 00:24:05 by mapandel         ###   ########.fr        #
+#    Updated: 2017/09/04 08:01:39 by mapandel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SRC =		sources/lem-in.c \
 			sources/lem-in_parsing.c \
 			sources/lem-in_checker.c \
 			sources/lem-in_pathfinder.c \
+			sources/lem-in_move_ants.c \
 			sources/lem-in_display.c \
 
 OBJ =		$(SRC:.c=.o)
