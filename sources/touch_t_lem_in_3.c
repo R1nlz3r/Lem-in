@@ -6,11 +6,46 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/26 22:46:37 by mapandel          #+#    #+#             */
-/*   Updated: 2017/08/31 07:28:29 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/09/02 06:45:33 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem-in.h"
+
+void				lem_in_sort_paths(t_lem_in *li)
+{
+	t_lem_in_path	*tmp;
+	int				tmppos;
+	int				i;
+	int				j;
+
+	i = 0;
+	while (i < li->nb_paths - 1)
+	{
+		tmppos = i;
+		j = i + 1;
+		while (j < li->nb_paths)
+		{
+			if (li->paths[tmppos]->len > li->paths[j]->len)
+				tmppos = j;
+			++j;
+		}
+		tmp = li->paths[i];
+		li->paths[i] = li->paths[tmppos];
+		li->paths[tmppos] = tmp;
+		++i;
+	}
+}
+
+t_lem_in_path		*lem_in_path_end(t_lem_in_path *li_p)
+{
+	t_lem_in_path	*tmp;
+
+	tmp = li_p;
+	while (tmp && tmp->next)
+		tmp = tmp->next;
+	return (tmp);
+}
 
 t_lem_in_path		*lem_in_path_start(t_lem_in_path *li_p)
 {
