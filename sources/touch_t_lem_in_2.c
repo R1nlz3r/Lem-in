@@ -6,7 +6,7 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/24 12:50:06 by mapandel          #+#    #+#             */
-/*   Updated: 2017/08/28 19:09:45 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/09/04 03:11:53 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void			del_t_lem_in_path(t_lem_in_path *li_p)
 {
 	t_lem_in_path	*tmp;
 
+	li_p = lem_in_path_start(li_p);
 	while (li_p)
 	{
 		tmp = li_p->next;
@@ -56,6 +57,19 @@ void			del_t_lem_in_path_chain(t_lem_in_path *li_p)
 		li_p->previous->next = NULL;
 	ft_memdel((void**)&li_p);
 	li_p = tmp;
+}
+
+void			lem_in_add_path(t_lem_in *li)
+{
+	void	*tmp;
+
+	if (!(tmp = ft_memalloc(sizeof(t_lem_in_path) * ((size_t)li->nb_paths
+		+ 1))))
+		exit (-1);
+	ft_memcpy(tmp, li->paths, sizeof(t_lem_in_path) * ((size_t)li->nb_paths));
+	ft_memdel((void**)&li->paths);
+	li->paths = tmp;
+
 }
 
 t_lem_in_path	*init_t_lem_in_path(t_lem_in *li, t_lem_in_path *li_p,
