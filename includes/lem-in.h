@@ -6,7 +6,7 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/12 17:20:29 by mapandel          #+#    #+#             */
-/*   Updated: 2017/09/03 21:26:06 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/09/06 03:26:41 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ typedef struct				s_lem_in_path
 {
 	int						room;
 	int						len;
+	int						ant;
+	char					pad_2[4];
 	struct s_lem_in_path	*next;
 	struct s_lem_in_path	*previous;
 }							t_lem_in_path;
@@ -44,6 +46,7 @@ typedef struct				s_lem_in
 	int						p_rooms;
 	int						p_pipes;
 	int						nb_ant;
+	int						nb_ant_backup;
 	int						nb_rooms;
 	int						nb_paths;
 	int						start_pos;
@@ -51,7 +54,6 @@ typedef struct				s_lem_in
 	int						travel_dir;
 	int						cur_path;
 	int						b_littlepath;
-	char					pad_0[4];
 	t_tab					*used_rooms;
 	t_lem_in_room			**anthill;
 	t_lem_in_path			**paths;
@@ -78,6 +80,7 @@ int							lem_in_find_pos(t_lem_in *li, t_lem_in_room *room);
 void						lem_in_parsing(t_lem_in *li);
 int							lem_in_checker_doubles(t_lem_in *li, char *name,
 	int x, int y);
+int							lem_in_checker_ants(t_lem_in *li);
 int							lem_in_is_banned(t_lem_in *li, t_lem_in_room *room);
 void						lem_in_prepare_search_paths(t_lem_in *li);
 void						lem_in_search_paths(t_lem_in *li)
@@ -85,10 +88,13 @@ void						lem_in_search_paths(t_lem_in *li)
 void						lem_in_move_ants(t_lem_in *li)
 	__attribute__ ((noreturn));
 void						lem_in_sort_paths(t_lem_in *li);
+void						lem_in_sort_rooms(t_lem_in *li);
 void						lem_in_display_error(t_lem_in *li)
 	__attribute__ ((noreturn));
 void						lem_in_display_path(t_lem_in *li,
 	t_lem_in_path *li_p);
 void						lem_in_display_banned_room(t_lem_in *li);
+void						lem_in_display_move_ants(t_lem_in *li,
+	t_lem_in_path *li_p);
 
 #endif
