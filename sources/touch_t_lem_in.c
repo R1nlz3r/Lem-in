@@ -6,7 +6,7 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/16 13:49:35 by mapandel          #+#    #+#             */
-/*   Updated: 2017/09/03 23:41:50 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/09/05 02:39:06 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ t_lem_in		*init_t_lem_in(t_lem_in *li)
 	li->start_boo = 0;
 	li->end_boo = 0;
 	li->nb_ant = 0;
+	li->nb_ant_backup = 0;
 	li->nb_rooms = 0;
 	li->nb_paths = 0;
 	li->p_nb_ant = 1;
