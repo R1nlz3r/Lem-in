@@ -6,7 +6,7 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/26 14:18:59 by mapandel          #+#    #+#             */
-/*   Updated: 2017/09/04 07:14:02 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/09/05 05:24:28 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,26 +62,28 @@ void			lem_in_search_paths(t_lem_in *li)
 	}
 	if (li->b_littlepath)
 	{
+		if (li->paths[li->nb_paths]->next)
+		{
+			li->paths[li->nb_paths]->next->previous = NULL;
+			del_t_lem_in_path(li->paths[li->nb_paths]->next);
+			li->paths[li->nb_paths]->next = NULL;
+		}
 		if (!li->travel_dir)
 		{
-			if (!li->paths[li->nb_paths]->next)
-				li->paths[li->nb_paths]->next = init_t_lem_in_path(li,
-				li->paths[li->nb_paths]->next, li->paths[li->nb_paths],
-				li->anthill[li->end_pos]);
+			li->paths[li->nb_paths]->next = init_t_lem_in_path(li,
+			li->paths[li->nb_paths]->next, li->paths[li->nb_paths],
+			li->anthill[li->end_pos]);
 			li->paths[li->nb_paths]->next->room = lem_in_find_pos(li, li->anthill[li->end_pos]);
-			li->paths[li->nb_paths]->next->previous = li->paths[li->nb_paths];
-			li->paths[li->nb_paths] = li->paths[li->nb_paths]->next;
 		}
 		else
 		{
-			if (!li->paths[li->nb_paths]->next)
-				li->paths[li->nb_paths]->next = init_t_lem_in_path(li,
-				li->paths[li->nb_paths]->next, li->paths[li->nb_paths],
-				li->anthill[li->start_pos]);
+			li->paths[li->nb_paths]->next = init_t_lem_in_path(li,
+			li->paths[li->nb_paths]->next, li->paths[li->nb_paths],
+			li->anthill[li->start_pos]);
 			li->paths[li->nb_paths]->next->room = lem_in_find_pos(li, li->anthill[li->start_pos]);
-			li->paths[li->nb_paths]->next->previous = li->paths[li->nb_paths];
-			li->paths[li->nb_paths] = li->paths[li->nb_paths]->next;
 		}
+		li->paths[li->nb_paths]->next->previous = li->paths[li->nb_paths];
+		li->paths[li->nb_paths] = li->paths[li->nb_paths]->next;
 		++li->nb_paths;
 	}
 	if (!li->nb_paths)
