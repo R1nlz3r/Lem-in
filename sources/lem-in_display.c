@@ -6,11 +6,22 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/15 11:43:54 by mapandel          #+#    #+#             */
-/*   Updated: 2017/09/04 07:26:27 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/09/06 00:44:53 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem-in.h"
+#include "ft_printf.h"
+
+void		lem_in_display_move_ants(t_lem_in *li, t_lem_in_path *li_p)
+{
+	if (!li_p->ant)
+		return ;
+	ft_printf("L%d-%s ", li_p->ant, li->anthill[li_p->next->room]->name);
+	if (li_p->next->next)
+		li_p->next->ant = li_p->ant;
+	li_p->ant = 0;
+}
 
 void		lem_in_display_banned_room(t_lem_in *li)
 {
