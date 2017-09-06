@@ -6,7 +6,7 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/14 22:50:03 by mapandel          #+#    #+#             */
-/*   Updated: 2017/08/31 09:07:23 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/09/06 07:03:12 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,10 @@ void			lem_in_parsing(t_lem_in *li)
 			else if (ft_strinc(li->line, "##end") && ft_strlen(li->line) == 5 && !li->end_boo)
 				li->end_boo = 1;
 			else if (li->line[1] == '#')
+			{
+				ft_putendl(li->line);
 				break ;
+			}
 		}
 		else if (li->p_nb_ant)
 			lem_in_parsing_nb_ant(li);
@@ -113,9 +116,11 @@ void			lem_in_parsing(t_lem_in *li)
 		else if (li->p_pipes)
 			lem_in_parsing_pipes(li);
 		else
-			break ;
-		if (li->p_nb_ant || li->p_rooms || li->p_pipes)
+		{
 			ft_putendl(li->line);
+			break ;
+		}
+		ft_putendl(li->line);
 		ft_strdel(&li->line);
 	}
 	ft_strdel(&li->line);
