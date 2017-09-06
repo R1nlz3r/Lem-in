@@ -6,7 +6,7 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/24 12:50:06 by mapandel          #+#    #+#             */
-/*   Updated: 2017/09/04 03:11:53 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/09/04 21:51:15 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ t_lem_in_path	*init_t_lem_in_path(t_lem_in *li, t_lem_in_path *li_p,
 		li_p->len = 0;
 	else
 		li_p->len = previous->len + 1;
+	li_p->ant = 0;
 	li_p->previous = NULL;
 	return (li_p);
 }
