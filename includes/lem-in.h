@@ -6,7 +6,7 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/12 17:20:29 by mapandel          #+#    #+#             */
-/*   Updated: 2017/09/06 12:24:59 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/09/08 06:04:40 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ typedef struct				s_lem_in
 	int						travel_dir;
 	int						cur_path;
 	int						b_littlepath;
+	int						b_endmoveants;
+	char					pad_0[4];
 	t_tab					*used_rooms;
 	t_lem_in_room			**anthill;
 	t_lem_in_path			**paths;
