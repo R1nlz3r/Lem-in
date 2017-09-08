@@ -6,7 +6,7 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/16 13:49:35 by mapandel          #+#    #+#             */
-/*   Updated: 2017/09/06 12:25:34 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/09/08 05:48:11 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,5 +111,6 @@ t_lem_in		*init_t_lem_in(t_lem_in *li)
 	li->travel_dir = 0;
 	li->cur_path = 0;
 	li->b_littlepath = 0;
+	li->b_endmoveants = 0;
 	return (li);
 }
