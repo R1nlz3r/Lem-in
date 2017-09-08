@@ -6,7 +6,7 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/01 04:22:27 by mapandel          #+#    #+#             */
-/*   Updated: 2017/09/06 06:41:54 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/09/08 05:52:17 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	lem_in_move_ants(t_lem_in *li)
 			++i;
 		}
 		i = 0;
+		li->b_endmoveants = 0;
 		while (i < li->nb_paths)
 		{
 			tmp = lem_in_path_end(li->paths[i]);
@@ -46,8 +47,17 @@ void	lem_in_move_ants(t_lem_in *li)
 				tmp = lem_in_path_start(tmp);
 				tmp->ant = li->nb_ant;
 				lem_in_display_move_ants(li, tmp);
+				li->b_endmoveants = 1;
 			}
 			++i;
+		}
+		if (!li->b_endmoveants && li->nb_ant != li->nb_ant_backup)
+		{
+			tmp = lem_in_path_end(li->paths[0]);
+			++li->nb_ant;
+			tmp = lem_in_path_start(tmp);
+			tmp->ant = li->nb_ant;
+			lem_in_display_move_ants(li, tmp);
 		}
 		ft_putendl("\033[1D\033[J");
 	}
