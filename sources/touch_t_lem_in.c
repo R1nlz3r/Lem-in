@@ -6,40 +6,11 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/16 13:49:35 by mapandel          #+#    #+#             */
-/*   Updated: 2017/09/08 05:48:11 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/09/10 13:40:38 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem-in.h"
-
-int				lem_in_link_rooms(t_lem_in_room *r1, t_lem_in_room *r2)
-{
-	int		i;
-	void	*tmp;
-
-	i = 0;
-	while (i < r1->nb_nexts)
-	{
-		if (r1->next[i] == r2)
-			return (-1);
-		++i;
-	}
-	if (!(tmp = ft_memalloc(sizeof(t_lem_in_room) * ((size_t)r1->nb_nexts
-		+ 1))))
-		exit (-1);
-	ft_memcpy(tmp, r1->next, sizeof(t_lem_in_room) * ((size_t)r1->nb_nexts));
-	ft_memdel((void**)&r1->next);
-	r1->next = tmp;
-	r1->next[r1->nb_nexts++] = r2;
-	if (!(tmp = ft_memalloc(sizeof(t_lem_in_room) * ((size_t)r2->nb_nexts
-		+ 1))))
-		exit (-1);
-	ft_memcpy(tmp, r2->next, sizeof(t_lem_in_room) * ((size_t)r2->nb_nexts));
-	ft_memdel((void**)&r2->next);
-	r2->next = tmp;
-	r2->next[r2->nb_nexts++] = r1;
-	return (0);
-}
+#include "lem_in.h"
 
 void			lem_in_add_room(t_lem_in *li)
 {
@@ -47,7 +18,7 @@ void			lem_in_add_room(t_lem_in *li)
 
 	if (!(tmp = ft_memalloc(sizeof(t_lem_in_room) * ((size_t)li->nb_rooms
 		+ 1))))
-		exit (-1);
+		exit(-1);
 	ft_memcpy(tmp, li->anthill, sizeof(t_lem_in_room) * ((size_t)li->nb_rooms));
 	ft_memdel((void**)&li->anthill);
 	li->anthill = tmp;
@@ -64,9 +35,9 @@ void			del_t_lem_in_room(t_lem_in_room *li_r)
 t_lem_in_room	*init_t_lem_in_room(t_lem_in_room *li_r)
 {
 	if (!(li_r = ft_memalloc(sizeof(t_lem_in_room))))
-		exit (-1);
+		exit(-1);
 	if (!(li_r->next = ft_memalloc(sizeof(t_lem_in_room*))))
-		exit (-1);
+		exit(-1);
 	li_r->name = NULL;
 	li_r->x_coor = 0;
 	li_r->y_coor = 0;
@@ -94,7 +65,7 @@ t_lem_in		*init_t_lem_in(t_lem_in *li)
 	if (!(li = ft_memalloc(sizeof(t_lem_in)))
 		|| !(li->anthill = ft_memalloc(sizeof(t_lem_in_room*)))
 		|| !(li->used_rooms = ft_tabnew(0)))
-		exit (-1);
+		exit(-1);
 	li->line = NULL;
 	li->paths = NULL;
 	li->start_boo = 0;
