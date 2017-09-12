@@ -6,7 +6,7 @@
 #    By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/08/12 19:59:07 by mapandel          #+#    #+#              #
-#    Updated: 2017/09/10 13:41:34 by mapandel         ###   ########.fr        #
+#    Updated: 2017/09/12 06:36:54 by mapandel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ SRC =		sources/lem_in.c \
 			sources/touch_t_lem_in_3.c \
 			sources/touch_t_lem_in_4.c \
 			sources/lem_in_parsing.c \
+			sources/lem_in_parsing_2.c \
 			sources/lem_in_checker.c \
 			sources/lem_in_pathfinder.c \
 			sources/lem_in_move_ants.c \
