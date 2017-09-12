@@ -6,7 +6,7 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/12 17:20:29 by mapandel          #+#    #+#             */
-/*   Updated: 2017/09/10 13:13:03 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/09/12 06:34:00 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void						del_banned_room(t_tab *used_rooms,
 	int unbanned_pos);
 int							lem_in_find_pos(t_lem_in *li, t_lem_in_room *room);
 void						lem_in_parsing(t_lem_in *li);
+void						lem_in_parsing_pipes(t_lem_in *li);
 int							lem_in_checker_doubles(t_lem_in *li, char *name,
 	int x, int y);
 int							lem_in_checker_ants(t_lem_in *li);
@@ -87,6 +88,8 @@ int							lem_in_is_banned(t_lem_in *li, t_lem_in_room *room);
 void						lem_in_prepare_search_paths(t_lem_in *li);
 void						lem_in_search_paths(t_lem_in *li)
 	__attribute__ ((noreturn));
+void						lem_in_search_paths_backtrack(t_lem_in *li,
+	t_lem_in_path *li_p, t_lem_in_room *cur);
 void						lem_in_move_ants(t_lem_in *li)
 	__attribute__ ((noreturn));
 void						lem_in_sort_paths(t_lem_in *li);
