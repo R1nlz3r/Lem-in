@@ -6,7 +6,7 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/12 06:20:47 by mapandel          #+#    #+#             */
-/*   Updated: 2017/09/13 08:21:14 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/09/16 09:46:42 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,10 @@ void			lem_in_parsing_rooms(t_lem_in *li)
 
 void			lem_in_parsing_nb_ant(t_lem_in *li)
 {
-	li->nb_ant = ft_atoi_spacesless(li->line);
 	li->p_nb_ant = 0;
-	if (li->start_boo || li->end_boo || li->nb_ant <= 0
-		|| !(ft_isdigit(li->line[0])) || ft_strlen(li->line) > 10
-		|| (ft_strlen(li->line) == 10 && ft_strcmp(li->line, "2147483647") > 0))
+	if (ft_atoi_strict(li->line) == 10000000000
+		|| !(li->nb_ant = ft_atoi(li->line))
+		|| li->start_boo || li->end_boo || li->nb_ant < 0)
 		return ;
 	li->p_rooms = 1;
 }
