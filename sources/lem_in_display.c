@@ -6,7 +6,7 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/15 11:43:54 by mapandel          #+#    #+#             */
-/*   Updated: 2017/09/10 13:40:05 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/10/14 22:38:45 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,6 @@ void		lem_in_display_path(t_lem_in *li, t_lem_in_path *li_p)
 void		lem_in_display_error(t_lem_in *li)
 {
 	del_t_lem_in(li);
-	ft_putendl("\n\033[31mERROR\033[0m");
+	ft_putendl("\033[31mERROR\033[0m");
 	exit(-1);
 }
