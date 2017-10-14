@@ -6,7 +6,7 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/14 22:50:03 by mapandel          #+#    #+#             */
-/*   Updated: 2017/09/13 08:19:38 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/10/14 22:36:50 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int		lem_in_parsing3(t_lem_in *li)
 		lem_in_parsing_pipes(li);
 	else
 	{
-		ft_putendl(li->line);
+		ft_putendl_buffer(li->line, 0);
 		return (1);
 	}
 	return (0);
@@ -44,12 +44,12 @@ static int		lem_in_parsing2(t_lem_in *li)
 	else if ((ft_strinc(li->line, "##start") && ft_strlen(li->line) == 7)
 		|| (ft_strinc(li->line, "##end") && ft_strlen(li->line) == 5))
 	{
-		ft_putendl(li->line);
+		ft_putendl_buffer(li->line, 0);
 		return (1);
 	}
 	if (li->start_boo == 1 && li->end_boo == 1)
 	{
-		ft_putendl(li->line);
+		ft_putendl_buffer(li->line, 0);
 		return (1);
 	}
 	return (0);
@@ -69,7 +69,7 @@ void			lem_in_parsing(t_lem_in *li)
 			;
 		else if (lem_in_parsing3(li))
 			break ;
-		ft_putendl(li->line);
+		ft_putendl_buffer(li->line, 0);
 		ft_strdel(&li->line);
 	}
 	ft_strdel(&li->line);
