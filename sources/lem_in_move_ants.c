@@ -6,7 +6,7 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/01 04:22:27 by mapandel          #+#    #+#             */
-/*   Updated: 2017/09/10 13:42:10 by mapandel         ###   ########.fr       */
+/*   Updated: 2017/10/14 23:12:59 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ static void		lem_in_move_ants2(t_lem_in *li)
 
 void			lem_in_move_ants(t_lem_in *li)
 {
+	ft_putstr_buffer("", 1);
 	ft_putchar('\n');
 	lem_in_sort_paths(li);
 	lem_in_sort_rooms(li);
